@@ -20,7 +20,7 @@ def test_partition_clustering():
     for id in pdb_ids:
         filepath = os.path.join("data", "%i.pdb"%id)
         active_sites.append(io.read_active_site(filepath))
-    assert cluster.test_format(cluster.cluster_by_partitioning(active_sites,2)) == [[276], [4629, 10701]]
+    assert cluster.test_format_part(cluster.cluster_by_partitioning(active_sites,2)) == [[276], [4629, 10701]]
 
 
 def test_hierarchical_clustering():
@@ -33,5 +33,5 @@ def test_hierarchical_clustering():
         active_sites.append(io.read_active_site(filepath))
 
     # update this assertion
-    assert cluster.test_format(cluster.cluster_hierarchically(active_sites)) == [[[276, 4629], [10701]], [[276, 4629, 10701]]]
+    assert cluster.test_format_hier(cluster.cluster_hierarchically(active_sites)) == [[[276, 4629], [10701]], [[276, 4629, 10701]]]
 
